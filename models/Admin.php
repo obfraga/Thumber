@@ -1,9 +1,8 @@
 <?php
-require('DAL/PicturesDAO.php');
+require('DAL/AdminDAO.php');
 
-use PicturesDAO;
 
-class Picture {
+class Admin {
 	private $id;
 	private $nome;
 
@@ -22,8 +21,9 @@ class Picture {
 		return $this;
 	}
 
-	public function get() {
-		return PicturesDAO->get();
+	public function validate() {
+		$adminDAO = new AdminDAO;
+		return $adminDAO->get();
 	}
 
 	/**

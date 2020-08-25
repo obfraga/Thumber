@@ -1,12 +1,18 @@
 <?php
 // Include router class
 
-include('infrastructure/routing.php');
 
-use Infrastructure\Route;
 
-Route::add('/Thumber/pics',function(){
-    require 'bio.html';
-});
+
+// use Infrastructure\Route;
+// require('Models/Pictures.php');
+
+// use Picture;
+ use Infrastructure\Route;
+
+// Route::add('/Thumber/pics',function(){
+    // echo Picture->get();
+// });
+
 
 ?>

@@ -41,8 +41,11 @@ class Route{
 
     $route_match_found = false;
 
-    foreach(self::$routes as $route){
+	
+	
 
+    foreach(self::$routes as $route){
+		
       // If the method matches check the path
 
       // Add basepath to matching string
@@ -59,7 +62,7 @@ class Route{
       // echo $route['expression'].'<br/>';
 
       // Check path match	
-      if(preg_match('#'.$route['expression'].'#',$path,$matches)){
+      if(preg_match('#'.$route['expression'].'#', $path,$matches)){
 
         $path_match_found = true;
 

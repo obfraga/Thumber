@@ -1,7 +1,9 @@
 <?php
 // Include router class
 
-include('infrastructure/routing.php');
+// include('infrastructure/routing.php');
+
+// use Infrastructure\Route;
 
 use Infrastructure\Route;
 
@@ -61,6 +63,6 @@ Route::add('/Thumber/Admin',function(){
     // echo $var1.' is a great number!';
 // });
 
-Route::run('/');
+
 
 ?>
