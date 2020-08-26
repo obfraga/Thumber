@@ -72,9 +72,26 @@
     });
     
 	/*==================================================================
-    [ Submit ]*/
-	$('#login').click(function (){
-		alert('login');
+    [ Submit ]*/	
+	$('#submit').click(function (){
+		let httpRequest = null;
+		if (window.XMLHttpRequest) // Mozilla, Safari, IE7+ ...
+			httpRequest = new XMLHttpRequest();
+		else if (window.ActiveXObject) // IE 6 and older
+			httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+		
+		let user = btoa($('#username').val());
+		let pass = btoa($('#password').val());
+		
+		httpRequest.open('GET', '/Thumber/validate/' + user + '/' + pass);
+		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		
+		httpRequest.onload = function() {
+			if(httpRequest.status == 200)
+				window.location.replace("/Thumber/admin");
+		}
+	  
+		httpRequest.send();
 	});
 
 })(jQuery);

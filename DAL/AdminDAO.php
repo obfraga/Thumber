@@ -12,12 +12,19 @@ class AdminDAO {
 		
 		if ($stmt = $con->prepare($query)) {
 			$stmt->execute();
-			$stmt->bind_result($field1, $field2, $field3, $field4);
+			$stmt->bind_result($guid, $name, $email, $password);
+			
 			
 			while ($stmt->fetch()) {
-				printf("%s, %s, %s, %s\n", $field1, $field2, $field3, $field4);
+				
+				$admin = new Admin;
+				$admin->name = $name;
+				$admin->email = $email;
+				$admin->password = $password;
 			}
 			$stmt->close();
+			
+			return $admin;
 		}
     }
 }

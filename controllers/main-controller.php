@@ -24,10 +24,6 @@ Route::add('/Thumber/photos',function(){
     require 'photos.html';
 });
 
-Route::add('/Thumber/Admin',function(){
-    require 'login.html';
-});
-
 
 
 

@@ -3,8 +3,10 @@ require('DAL/AdminDAO.php');
 
 
 class Admin {
-	private $id;
-	private $nome;
+	private $guid;
+	private $name;
+	private $email;
+	private $password;
 
 
 	public function __get($property) {
@@ -21,9 +23,18 @@ class Admin {
 		return $this;
 	}
 
-	public function validate() {
+	public function validate($user, $pass) {
 		$adminDAO = new AdminDAO;
-		return $adminDAO->get();
+		$admin = $adminDAO->get();
+		
+		$guid = $admin->guid;
+		$name = $admin->name;
+		$email = $admin->email;
+		$password = $admin->password;
+					
+		if ($admin->email == $user && password_verify($pass, $admin->password))
+			return true;
+		return false;
 	}
 
 	/**
