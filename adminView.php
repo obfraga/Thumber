@@ -1,3 +1,12 @@
+<?php
+	if (session_status() == PHP_SESSION_NONE)
+		session_start();
+	if (!isset($_SESSION['LOGGED'])) {
+		header("location: /Thumber/login");
+		exit;
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -35,7 +44,7 @@
 
 		<div class="dropzone">
 			<img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-			<input type="file" id="files-selector" class="upload-input" multiple />
+			<input type="file" accept="image/*" id="files-selector" class="upload-input" multiple />
 		</div>
 
 		<button type="button" class="btn" id="upload" name="uploadbutton">Upload file</button>

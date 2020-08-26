@@ -12,24 +12,35 @@ Route::add('/Thumber/validate/([a-zA-Z0-9=]*)/([a-zA-Z0-9=]*)', function($user, 
 	$valid = $admin->validate(base64_decode($user), base64_decode($pass));
 
 	if ($valid) {
-		setcookie('LOGGED', true, time() + (86400 * 30)); // 86400 = 1 day
+		session_start();
+		$_SESSION['LOGGED'] = true;
 		header("HTTP/1.1 200 OK");
 	}
 	else header("HTTP/1.1 400 Bad Request");
 });
 
 Route::add('/Thumber/login', function() {
-    require 'login.html';
+	session_start();
+    if (isset($_SESSION['LOGGED']))
+		header("Location: /Thumber/admin");
+	else require 'loginView.html';
 });
 
 Route::add('/Thumber/admin', function() {
-	if (isset($_COOKIE['LOGGED']))
+	session_start();
+	if (!isset($_SESSION['LOGGED']))
 		header("Location: /Thumber/login");
-	else require 'admin.html';
+	else require 'adminView.php';
 });
 
 Route::add('/Thumber/upload', function() {
-	print_r($_POST['data']);
+	session_start();
+    if (!isset($_SESSION['LOGGED'])) {
+		header("Location: /Thumber/login");
+		exit;
+	}
+	
+	print_r($_POST);
 	//--- TODO -> Inser data and description in database
 	// header("HTTP/1.1 200 OK");
 	// header("HTTP/1.1 400 Bad Request");

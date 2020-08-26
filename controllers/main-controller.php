@@ -8,20 +8,20 @@
 use Infrastructure\Route;
 
 
-Route::add('/Thumber/bio',function(){
-    require 'bio.html';
+Route::add('/Thumber/bio',function() {
+    require 'bioView.html';
 });
 
-Route::add('/Thumber/contact',function(){
-    require 'contact.html';
+Route::add('/Thumber/contact',function() {
+    require 'contactView.html';
 });
 
-Route::add('/Thumber/',function(){
-    require 'main.html';
+Route::add('/Thumber/',function() {
+    require 'mainView.html';
 });
 
-Route::add('/Thumber/photos',function(){
-    require 'photos.html';
+Route::add('/Thumber/photos',function() {
+    require 'photosView.html';
 });
 
 
