@@ -1,11 +1,9 @@
 <?php
-
-class Admin {
+class Photo {
 	private $guid;
-	private $name;
-	private $email;
-	private $password;
-	
+	private $data;
+	private $description;
+
 	public function __get($property) {
 		if (property_exists($this, $property))
 			return $this->$property;

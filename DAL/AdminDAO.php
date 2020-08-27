@@ -1,6 +1,6 @@
 <?php
 
-require('infrastructure/connection.php');
+require('models/admin.php');
 
 class AdminDAO {
 	
@@ -14,18 +14,17 @@ class AdminDAO {
 			$stmt->execute();
 			$stmt->bind_result($guid, $name, $email, $password);
 			
-			
 			while ($stmt->fetch()) {
-				
 				$admin = new Admin;
 				$admin->name = $name;
 				$admin->email = $email;
 				$admin->password = $password;
 			}
-			$stmt->close();
-			
-			return $admin;
+			$stmt->close();	
 		}
+		$con->close();
+		
+		return $admin;
     }
 }
 ?>
