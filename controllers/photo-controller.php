@@ -12,8 +12,9 @@ require('domain/photo-service.php');
 
 Route::add('/Thumber/pics',function(){
     $photoService = new photoService;
-	// echo "<img src='data:image/png;base64, ".base64_encode($photoService->get()[0]->data)."'/>";
-	print_r ($photoService->get());
+	// echo $photoService->get()[0]->data;
+	header('Content-Type: application/json');
+	echo json_encode($photoService->get());
 });
 
 Route::add('/Thumber/upload', function() {

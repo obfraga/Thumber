@@ -17,13 +17,12 @@ class PhotosDAO {
 
 			$photos = [];
 			$i = 0;
-			while ($stmt->fetch()) {
-				$photo = new Photo;
-				$photo->guid = $guid;
-				$photo->data = $data;
-				$photo->description = $description;
-				$photos[$i++] = $photo;
-			}
+			while ($stmt->fetch())
+				$photos[$i++] = (object) [
+					'guid' => $guid,
+					'data' => $data,
+					'description' => $description
+				];
 			$stmt->close();
 		}
 		$con->close();

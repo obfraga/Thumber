@@ -12,7 +12,12 @@ class photoService {
 	public function get() {
 		$photosDAO = new PhotosDAO;
 
-		return $photosDAO->get();
+		$photos = $photosDAO->get();
+
+		foreach ($photos as $photo)
+			$photo->data = base64_encode($photo->data);
+
+		return $photos;
 	}
 }
 ?>
