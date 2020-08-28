@@ -5,7 +5,7 @@ require('models/photo.php');
 class PhotosDAO {
 	
 	public function get(){
-		$query = "SELECT * FROM thumber.picture";
+		$query = "SELECT * FROM thumber.photo";
 
 		$connection = new Connection;
 		$con = $connection->Connect();
@@ -13,7 +13,7 @@ class PhotosDAO {
 
 		if ($stmt = $con->prepare($query)) {
 			$stmt->execute();
-			$stmt->bind_result($guid, $data, $description);
+			$stmt->bind_result($guid, $data, $description, $title);
 
 			$photos = [];
 			$i = 0;
@@ -21,6 +21,7 @@ class PhotosDAO {
 				$photos[$i++] = (object) [
 					'guid' => $guid,
 					'data' => $data,
+					'title' => $title,
 					'description' => $description
 				];
 			$stmt->close();
@@ -30,8 +31,10 @@ class PhotosDAO {
 		return $photos;
     }
 	
-	public function add($guid, $data, $description) {
-		$query = "INSERT INTO thumber.picture VALUES ('{$guid}', '{$data}', '{$description}')";
+	public function add($guid, $data, $title, $description) {
+		echo $data;
+
+		$query = "INSERT INTO thumber.photo VALUES ('{$guid}', '{$data}', '{$description}', '{$title}')";
 
 		$connection = new Connection;
 		$con = $connection->Connect();

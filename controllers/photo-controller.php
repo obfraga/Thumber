@@ -12,7 +12,6 @@ require('domain/photo-service.php');
 
 Route::add('/Thumber/pics',function(){
     $photoService = new photoService;
-	// echo $photoService->get()[0]->data;
 	header('Content-Type: application/json');
 	echo json_encode($photoService->get());
 });
@@ -28,7 +27,7 @@ Route::add('/Thumber/upload', function() {
 		if (is_uploaded_file($_FILES['images']['tmp_name'])) {
 			$imgData = addslashes(file_get_contents($_FILES['images']['tmp_name']));
 			$photoService = new photoService;
-			$photoService->add(com_create_guid(), $imgData, "asdfasdfasdfasdf");
+			$photoService->add(com_create_guid(), $imgData, "Title", file_get_contents('https://loripsum.net/api/plaintext'));
 		}
 
 	header("Location: /Thumber/admin");

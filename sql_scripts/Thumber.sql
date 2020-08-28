@@ -29,12 +29,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Thumber`.`Picture`
+-- Table `Thumber`.`Photo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Thumber`.`Picture` (
+CREATE TABLE IF NOT EXISTS `Thumber`.`Photo` (
   `Guid` CHAR(38) NOT NULL,
-  `Data` BLOB NULL,
-  `Description` VARCHAR(21845) NULL,
+  `Data` BLOB NOT NULL,
+  `Description` TEXT NOT NULL,
+  `Title` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`Guid`),
   UNIQUE INDEX `Guid_UNIQUE` (`Guid` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -43,3 +44,5 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO thumber.admin VALUES ('{EA0BCF0F-541C-42CC-8B99-3EAF1DBGASS0}', 'Fulano', 'fulano@fake.com', '$2y$10$Qbs78k8VoS34GWgC3YLkV.aTlrIF/QUNMaj0YsBX4h962QO3hed6.');

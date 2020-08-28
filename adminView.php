@@ -1,10 +1,10 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE)
-		session_start();
-	if (!isset($_SESSION['LOGGED'])) {
-		header("location: /Thumber/login");
-		exit;
-	}
+if (session_status() == PHP_SESSION_NONE)
+	session_start();
+if (!isset($_SESSION['LOGGED'])) {
+	header("location: /Thumber/login");
+	exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,22 +37,22 @@
 	</head>
 	<body>
 		<div class="frame">
-	<div class="center">
-		<form enctype="multipart/form-data" action="/Thumber/upload" method="post" target="_self">
-			<div class="title">
-				<h1 id="selected-files">Drop file to upload</h1>
-			</div>
+			<form enctype="multipart/form-data" action="/Thumber/upload" method="post" target="_self">
+				<div class="center">
+					<div class="title">
+						<h1 id="selected-files">Drop file to upload</h1>
+					</div>
+					
+					<div class="dropzone">
+						<img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+						<input type="file" accept="image/*" name="images" id="files-selector" class="upload-input" multiple />
+					</div>
 
-			<div class="dropzone">
-				<img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-				<input type="file" accept="image/*" name="images" id="files-selector" class="upload-input" multiple />
-			</div>
+					<input type="submit" class="btn" value="Upload file" name="uploadbutton" />
 
-			<!--<button type="button" class="btn" id="upload" name="uploadbutton">Upload file</button>-->
-			<input type="submit" class="btn" value="Upload file" name="uploadbutton" />
-		</form>
-	</div>
-</div>
+				</div>
+			</form>
+		</div>
 <!-- original pen: https://codepen.io/roydigerhund/pen/ZQdbeN  -->
 
 <!-- NO JS ADDED YET -->

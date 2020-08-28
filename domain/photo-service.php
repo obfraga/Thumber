@@ -3,10 +3,10 @@ require('DAL/PhotosDAO.php');
 	
 class photoService {
 		
-	public function add($guid, $data, $description) {
+	public function add($guid, $data, $title, $description) {
 		$photosDAO = new PhotosDAO;
 
-		$photosDAO->add($guid, $data, $description);
+		$photosDAO->add($guid, $data, $title, $description);
 	}
 
 	public function get() {
