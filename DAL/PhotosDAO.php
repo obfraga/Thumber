@@ -32,18 +32,21 @@ class PhotosDAO {
     }
 	
 	public function add($guid, $data, $title, $description) {
-		echo $data;
+		try {
+			$query = "INSERT INTO thumber.photo VALUES ('{$guid}', '{$data}', '{$description}', '{$title}')";
 
-		$query = "INSERT INTO thumber.photo VALUES ('{$guid}', '{$data}', '{$description}', '{$title}')";
+			$connection = new Connection;
+			$con = $connection->Connect();
 
-		$connection = new Connection;
-		$con = $connection->Connect();
+			if ($stmt = $con->prepare($query))
+				$stmt->execute();
 
-		if ($stmt = $con->prepare($query)) {
-			$stmt->execute();
+			$con->close();
+		} catch (Exception $e) {
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			header("Location: /Thumber/admin?error");
+			exit;
 		}
-
-		$con->close();
     }
 }
 ?>

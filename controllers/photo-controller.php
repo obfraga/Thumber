@@ -30,7 +30,7 @@ Route::add('/Thumber/upload', function() {
 			$photoService->add(com_create_guid(), $imgData, "Title", file_get_contents('https://loripsum.net/api/plaintext'));
 		}
 
-	header("Location: /Thumber/admin");
+	header("Location: /Thumber/admin?success");
 }, 'post');
 
 
